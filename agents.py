@@ -11,13 +11,38 @@ load_dotenv()
 # Function to get stock symbol
 def get_company_symbol(company: str) -> str:
     symbols = {
+        # US Tech Giants
         'NVIDIA': 'NVDA', 'APPLE': 'AAPL', 'GOOGLE': 'GOOGL', 'MICROSOFT': 'MSFT',
         'TESLA': 'TSLA', 'AMAZON': 'AMZN', 'META': 'META', 'NETFLIX': 'NFLX',
+
+        # Indian Market
         'TCS': 'TCS.NS', 'RELIANCE': 'RELIANCE.NS', 'INFOSYS': 'INFY.NS',
         'WIPRO': 'WIPRO.NS', 'HDFC': 'HDFCBANK.NS', 'TATAMOTORS': 'TATAMOTORS.NS',
-        'ICICIBANK': 'ICICIBANK.NS', 'SBIN': 'SBIN.NS'
+        'ICICIBANK': 'ICICIBANK.NS', 'SBIN': 'SBIN.NS', 'L&T': 'LT.NS', 'BAJAJ FINANCE': 'BAJFINANCE.NS',
+        'HUL': 'HINDUNILVR.NS', 'ITC': 'ITC.NS', 'MARUTI': 'MARUTI.NS', 'ASIAN PAINTS': 'ASIANPAINT.NS',
+
+        # US Financials & Industrials
+        'JPMORGAN': 'JPM', 'GOLDMAN SACHS': 'GS', 'BANK OF AMERICA': 'BAC',
+        'WELLS FARGO': 'WFC', 'BERKSHIRE HATHAWAY': 'BRK-B',
+        'BOEING': 'BA', 'CATERPILLAR': 'CAT',
+
+        # Energy & Automotive
+        'EXXON MOBIL': 'XOM', 'CHEVRON': 'CVX', 'FORD': 'F',
+        'GENERAL MOTORS': 'GM', 'TOYOTA': 'TM', 'HONDA': 'HMC',
+
+        # European Giants
+        'SAP': 'SAP', 'SIEMENS': 'SIEGY', 'LOREAL': 'OR.PA',
+        'UNILEVER': 'UL', 'NESTLE': 'NESN.SW', 'ROCHE': 'ROG.SW',
+
+        # Chinese & Asian Market
+        'ALIBABA': 'BABA', 'TENCENT': '0700.HK', 'BAIDU': 'BIDU',
+        'SAMSUNG': '005930.KQ', 'TSMC': 'TSM',
+
+        # Cryptocurrencies (if needed)
+        'BITCOIN': 'BTC-USD', 'ETHEREUM': 'ETH-USD'
     }
     return symbols.get(company.upper(), "Unknown")
+
 
 # Web agent for fetching news
 web_agent = Agent(
