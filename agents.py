@@ -22,7 +22,7 @@ def get_company_symbol(company: str) -> str:
 # Web agent for fetching news
 web_agent = Agent(
     name="Web Agent",
-    model=Groq(id="llama-3.3-70b-versatile"),
+    model=Groq(id="llama-3.3-70b-specdec"),
     tools=[DuckDuckGo()],
     instructions=["Always include sources"],
     show_tool_calls=True,
@@ -33,7 +33,7 @@ web_agent = Agent(
 finance_agent = Agent(
     name="Finance Agent",
     role="Get financial data",
-    model=Groq(id="llama-3.3-70b-versatile"),
+    model=Groq(id="llama-3.3-70b-specdec"),
     tools=[YFinanceTools(stock_price=True, analyst_recommendations=True, company_info=True)],
     instructions=["Use tables to display data.", "Use markdown for clear formatting."],
     show_tool_calls=True,
@@ -42,7 +42,7 @@ finance_agent = Agent(
 
 # Combined agent team
 agent_team = Agent(
-    model=Groq(id="llama-3.3-70b-versatile"),
+    model=Groq(id="llama-3.3-70b-specdec"),
     team=[web_agent, finance_agent],
     instructions=["Provide separate sections for news and stock data.", "Use tables when appropriate."],
     show_tool_calls=True,
