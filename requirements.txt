@@ -1,0 +1,7 @@
+phidata 
+yfinance
+duckduckgo-search
+groq
+streamlit
+
+#these are the libraries i had to exclusively install for this project , the rest(if required) were alreay installed in the environment i am working on
