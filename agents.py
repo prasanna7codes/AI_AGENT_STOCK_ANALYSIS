@@ -7,6 +7,24 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+def get_company_symbol(company: str) -> str:
+    """Use this function to get the symbol for a company.
+
+    Args:
+        company (str): The name of the company.
+
+    Returns:
+        str: The symbol for the company.
+    """
+    symbols = {
+    'NVIDIA': 'NVDA', 'APPLE': 'AAPL', 'GOOGLE': 'GOOGL', 'MICROSOFT': 'MSFT',
+    'TESLA': 'TSLA', 'AMAZON': 'AMZN', 'META': 'META', 'NETFLIX': 'NFLX',
+    'TCS': 'TCS.NS', 'RELIANCE': 'RELIANCE.NS', 'INFOSYS': 'INFY.NS',
+    'WIPRO': 'WIPRO.NS', 'HDFC': 'HDFCBANK.NS', 'TATAMOTORS': 'TATAMOTORS.NS',
+    'ICICIBANK': 'ICICIBANK.NS', 'SBIN': 'SBIN.NS'
+    }
+    return symbols.get(company, "Unknown")
+
 web_agent = Agent(
     name="Web Agent",
     model=Groq(id="deepseek-r1-distill-llama-70b"),
@@ -23,7 +41,10 @@ finance_agent = Agent(
     model=Groq(id="deepseek-r1-distill-llama-70b"),
     # model=OpenAIChat(id="gpt-4o"),
     tools=[YFinanceTools(stock_price=True, analyst_recommendations=True, company_info=True)],
-    instructions=["Use tables to display data"],
+    instructions=[
+        "Use tables to display data.",
+        "If you need to find the symbol for a company, use the get_company_symbol tool.",
+    ],
     show_tool_calls=True,
     markdown=True,
 )
